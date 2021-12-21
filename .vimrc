@@ -4,9 +4,89 @@
 " vim Konfigurationsdatei
 "
 "#######################################################################
+" vim-plug
+"
+call plug#begin('~/.vim/plugged')
+" Colorscheme dracula
+Plug 'dracula/vim', { 'as': 'dracula' }
+" Distraction-free writing
+Plug 'junegunn/goyo.vim'
+" Hyperfocus-writing
+Plug 'junegunn/limelight.vim'
+" Test
+Plug 'reedes/vim-pencil'
+" Markdown Language extension
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" Go Language extension
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Powershell Language extension
+Plug 'pprovost/vim-ps1'
+" Dockerfile syntax extension
+Plug 'ekalinin/Dockerfile.vim'
+" Autocompletion
+Plug 'maralla/completor.vim'
+" Tree view
+Plug 'preservim/nerdtree'
+" Startpage
+Plug 'mhinz/vim-startify'
+" Terraform Language extension
+Plug 'hashivim/vim-terraform'
+call plug#end()
+
+" Language Server
+"
+" Enable lsp for go by using gopls
+let g:completor_filetype_map = {}
+let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls -remote=auto'}
 
 "#######################################################################
-" Einstellungen
+" Function
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  Pencil
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+  PencilOff
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+"#######################################################################
+" File-based Settings
+"
+" PEP-8 default for python files
+au BufNewFile,BufRead *.py set
+    \ tabstop=4
+    \ softtabstop=4
+    \ shiftwidth=4
+    \ textwidth=79
+    \ expandtab
+    \ autoindent
+    \ fileformat=unix
+
+" Global Settings
+"
+colorscheme dracula
 
 set nocompatible             " This option has the effect of making Vim either·
                              " more Vi-compatible, or make Vim behave in a more·
@@ -55,7 +135,9 @@ set list                     " List mode: Show tabs as CTRL-I is displayed,
 set listchars=tab:»·,trail:· " Tabs und Leerzeichen am Zeilenende anzeigen
 
 "#######################################################################
-" Makros
+" Macros
 map <F2> i########################################################################<CR><ESC>
 map <F3> :r!date +\%Y-\%m-\%d<CR>
 map <F4> :r!date +\%Y-\%m-\%d_\%H-\%M-\%S<CR>
+
+"#######################################################################
