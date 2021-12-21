@@ -13,7 +13,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/goyo.vim'
 " Hyperfocus-writing
 Plug 'junegunn/limelight.vim'
-" Test
+" Text formating like soft line wraps
 Plug 'reedes/vim-pencil'
 " Markdown Language extension
 Plug 'godlygeek/tabular'
