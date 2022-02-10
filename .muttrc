@@ -1,0 +1,38 @@
+# me
+set realname = "Janno Tjarks"
+set from = "janno.tjarks@mailbox.org"
+set envelope_from = yes
+
+# mailbox specific settings
+
+## personal account info
+set imap_user = "janno.tjarks@mailbox.org"
+set folder = imaps://imap.mailbox.org/
+set smtp_url = smtps://janno.tjarks@mailbox.org@smtp.mailbox.org
+### this needs the package cyrus-sasl-plain
+set smtp_authenticators='login:plain'
+
+## default mailboxes
+### this is mailbox.org, these are the places to store bits
+set spoolfile = "=INBOX"
+set record = "=Sent"
+set postponed = "=Drafts"
+
+# non-mailbox specific settings
+## save copies of sent mail to $record
+set copy=yes
+
+# color scheme
+# source ~/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc 
+#
+set mailcap_path="~/.mailcap"
+bind attach <return>    view-mailcap
+
+set sort_aux = last-date-received                           
+set sort = reverse-threads
+
+# if you have more than a few emails, you *really* want this
+set header_cache = ~/.mutt/headercache
+set message_cachedir = ~/.mutt/messagecache
+
+# vim: ft=muttrc:

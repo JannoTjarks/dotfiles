@@ -71,7 +71,14 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git web-search tmux taskwarrior)
+
+DRACULA_DISPLAY_CONTEXT=1
+DRACULA_DISPLAY_TIME=1
+
+ZSH_TMUX_AUTOSTART=true
+
+ZSH_WEB_SEARCH_ENGINES=(reddit "https://www.reddit.com/search/?q=")
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,12 +107,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-## ALIAS
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-## DRACULA
-DRACULA_DISPLAY_CONTEXT=1
 
 ## Scripts
 SSH_ENV="$HOME/.ssh/agent-env"
