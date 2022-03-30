@@ -108,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias currentfolder='basename "`pwd`"'
 
 ## Scripts
 SSH_ENV="$HOME/.ssh/agent-env"
@@ -131,4 +132,20 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+
+## ZSH Compleation
+if (( $+commands[kubectl] )); then
+    source <(kubectl completion zsh)
+fi
+if (( $+commands[az] )); then
+    source /etc/bash_completion.d/azure-cli
+fi
+if (( $+commands[helm] )); then
+    source <(helm completion zsh)
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
