@@ -1,32 +1,45 @@
 {
-    "http.proxyStrictSSL": false,
-    "npm.binPath": "/home/janno/.nvm/versions/node/v14.18.3/bin/npm",
-    "suggest.noselect": false,
-    "diagnostic.errorSign": "✘",
-    "diagnostic.warningSign": "!",
-    "diagnostic.infoSign": "?",
-    "diagnostic.checkCurrentLine": true,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "javascript",
-        "html",
-        "json",
-        "css",
-        "scss",
-        "go"
-    ],
-    "go.goplsOptions": {
-        "staticcheck": true
+  "http.proxyStrictSSL": false,
+  "npm.binPath": "/home/janno/.nvm/versions/node/v14.18.3/bin/npm",
+  "suggest.noselect": false,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "?",
+  "diagnostic.checkCurrentLine": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "html",
+    "json",
+    "css",
+    "scss",
+    "go"
+  ],
+  "go.goplsOptions": {
+    "staticcheck": true
+  },
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh",
+        "bash"
+      ],
+      "ignoredRootPaths": [
+        "~"
+      ]
     },
-    "languageserver": {
-        "go": {
-            "command": "/home/janno/go/bin/gopls",
-            "rootPatterns": [
-                "go.mod"
-            ],
-            "trace.server": "verbose",
-            "filetypes": [
-                "go"
-            ]
-        }
+    "go": {
+      "command": "/home/janno/go/bin/gopls",
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "trace.server": "verbose",
+      "filetypes": [
+        "go"
+      ]
     }
+  }
 }
