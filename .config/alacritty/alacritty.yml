@@ -3,3 +3,7 @@ import:
 
 window:
   decorations: none
+
+font:
+  normal:
+    family: SauceCodePro Nerd Font
