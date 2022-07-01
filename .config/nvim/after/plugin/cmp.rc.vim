@@ -1,7 +1,5 @@
 if !exists('g:loaded_cmp') | finish | endif
 
-set completeopt=menuone,noinsert,noselect
-
 lua <<EOF
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -13,6 +11,9 @@ local lspkind = require'lspkind'
 local luasnip = require'luasnip'
 
 cmp.setup({
+    completion = {
+        completeopt = "menuone,noinsert,noselect",
+    },
     mapping = cmp.mapping.preset.insert({
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
