@@ -8,3 +8,10 @@ NVIM-Treesitter needs a installed c++ compliler:
 ``` sh
 zypper install gcc-c++
 ```
+
+Install language servers with npm
+```
+npm install --global typescript-language-server
+npm install --global yaml-language-server
+```
+
