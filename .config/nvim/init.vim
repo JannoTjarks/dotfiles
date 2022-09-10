@@ -32,9 +32,13 @@ set expandtab
 set list
 set listchars=tab:»·,trail:·
 
-runtime ./maps.vim
+" Maps
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
 
 if has("nvim")
     lua require('plugins')
-    colorscheme dracula
+    set termguicolors
 endif

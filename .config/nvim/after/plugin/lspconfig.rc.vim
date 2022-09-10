@@ -50,11 +50,19 @@ nvim_lsp.tsserver.setup {
 }
 
 nvim_lsp.terraformls.setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
 
 nvim_lsp.gopls.setup {
     on_attach = on_attach
 }
-EOF
 
+nvim_lsp.yamlls.setup{
+    on_attach = on_attach,
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+}
+
+nvim_lsp.jsonls.setup{}
+nvim_lsp.bashls.setup{}
+EOF
