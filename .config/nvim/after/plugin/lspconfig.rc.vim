@@ -36,7 +36,7 @@ local on_attach = function(client, bufnr)
     end
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
@@ -82,7 +82,7 @@ require('lspconfig').bashls.setup{
 require('lspconfig').powershell_es.setup{
     bundle_path = '~/powershell-editor-services',
     on_attach = on_attach,
-    default_capabilities
+    capabilities = capabilities
 }
 
 require'lspconfig'.omnisharp.setup {
