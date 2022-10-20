@@ -139,6 +139,12 @@ fi
 if (( $+commands[kubectl] )); then
     source <(kubectl completion zsh)
 fi
+if (( $+commands[kubelogin] )); then
+    source <(kubelogin completion zsh)
+fi
+if (( $+commands[terraform-docs] )); then
+    source <(terraform-docs completion zsh)
+fi
 if (( $+commands[az] )); then
     source /etc/bash_completion.d/azure-cli
 fi
