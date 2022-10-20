@@ -9,23 +9,26 @@ vim.api.nvim_command('packadd packer.nvim')
 
 local no_errors, error_msg = pcall(function()
 
-  local time
-  local profile_info
-  local should_profile = false
-  if should_profile then
-    local hrtime = vim.loop.hrtime
-    profile_info = {}
-    time = function(chunk, start)
-      if start then
-        profile_info[chunk] = hrtime()
-      else
-        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
-      end
+_G._packer = _G._packer or {}
+_G._packer.inside_compile = true
+
+local time
+local profile_info
+local should_profile = false
+if should_profile then
+  local hrtime = vim.loop.hrtime
+  profile_info = {}
+  time = function(chunk, start)
+    if start then
+      profile_info[chunk] = hrtime()
+    else
+      profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
     end
-  else
-    time = function(chunk, start) end
   end
-  
+else
+  time = function(chunk, start) end
+end
+
 local function save_profiles(threshold)
   local sorted_times = {}
   for chunk_name, time_taken in pairs(profile_info) do
@@ -38,8 +41,10 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
-  _G._packer = _G._packer or {}
   _G._packer.profile_output = results
 end
 
@@ -79,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/janno/.local/share/nvim/site/pack/packer/start/barbar.nvim",
     url = "https://github.com/romgrk/barbar.nvim"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/home/janno/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/janno/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -89,10 +99,30 @@ _G.packer_plugins = {
     path = "/home/janno/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/janno/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/home/janno/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
+  ["editorconfig.nvim"] = {
+    loaded = true,
+    path = "/home/janno/.local/share/nvim/site/pack/packer/start/editorconfig.nvim",
+    url = "https://github.com/gpanders/editorconfig.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/janno/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/home/janno/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lspkind.nvim"] = {
     loaded = true,
@@ -109,11 +139,6 @@ _G.packer_plugins = {
     path = "/home/janno/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/preservim/nerdcommenter"
   },
-  nerdtree = {
-    loaded = true,
-    path = "/home/janno/.local/share/nvim/site/pack/packer/start/nerdtree",
-    url = "https://github.com/scrooloose/nerdtree"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/janno/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -123,6 +148,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/janno/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/janno/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -154,19 +184,31 @@ _G.packer_plugins = {
     path = "/home/janno/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  vim = {
+  ["true-zen.nvim"] = {
     loaded = true,
-    path = "/home/janno/.local/share/nvim/site/pack/packer/start/vim",
-    url = "https://github.com/dracula/vim"
+    path = "/home/janno/.local/share/nvim/site/pack/packer/start/true-zen.nvim",
+    url = "https://github.com/Pocco81/true-zen.nvim"
   },
-  ["vim-terraform"] = {
+  ["twilight.nvim"] = {
     loaded = true,
-    path = "/home/janno/.local/share/nvim/site/pack/packer/start/vim-terraform",
-    url = "https://github.com/hashivim/vim-terraform"
+    path = "/home/janno/.local/share/nvim/site/pack/packer/start/twilight.nvim",
+    url = "https://github.com/folke/twilight.nvim"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/home/janno/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+
+_G._packer.inside_compile = false
+if _G._packer.needs_bufread == true then
+  vim.cmd("doautocmd BufRead")
+end
+_G._packer.needs_bufread = false
+
 if should_profile then save_profiles() end
 
 end)

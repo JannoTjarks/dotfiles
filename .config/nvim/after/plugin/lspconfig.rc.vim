@@ -3,9 +3,6 @@ if !exists('g:lspconfig')
 endif
 
 lua <<EOF
-local nvim_lsp = require('lspconfig')
-local protocol = require('vim.lsp.protocol')
-
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -39,38 +36,63 @@ local on_attach = function(client, bufnr)
     end
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities
+
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-nvim_lsp.tsserver.setup {
-    on_attach = on_attach
-}
-
-nvim_lsp.terraformls.setup {
+require('lspconfig').tsserver.setup {
     on_attach = on_attach,
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = capabilities
 }
 
-nvim_lsp.gopls.setup {
-    on_attach = on_attach
+require'lspconfig'.eslint.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
-nvim_lsp.yamlls.setup {
-    on_attach = on_attach
+require('lspconfig').jsonls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
-nvim_lsp.jsonls.setup {
-    on_attach = on_attach
+require('lspconfig').yamlls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
-nvim_lsp.bashls.setup {
-    on_attach = on_attach
+require('lspconfig').terraformls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
-nvim_lsp.ccls.setup{
-    on_attach = on_attach
+require('lspconfig').gopls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
+require('lspconfig').bashls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+require('lspconfig').powershell_es.setup{
+    bundle_path = '~/powershell-editor-services',
+    on_attach = on_attach,
+    default_capabilities
+}
+
+require'lspconfig'.omnisharp.setup {
+    cmd = { "dotnet", "/home/janno/bin/omnisharp/OmniSharp.dll" },
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+require'lspconfig'.jedi_language_server.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+EOF

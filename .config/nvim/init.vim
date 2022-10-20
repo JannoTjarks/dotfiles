@@ -6,8 +6,8 @@ set backupdir=~/.vim/backups
 
 " Accessablity
 set shortmess+=c
-set signcolumn=yes
 set showmode
+set signcolumn=yes
 set ruler
 set number
 set autoread
@@ -16,6 +16,7 @@ set backup
 set conceallevel=3
 set concealcursor-=n
 set clipboard^=unnamed,unnamedplus
+
 
 " Search
 set incsearch
@@ -41,4 +42,8 @@ nnoremap <right> <nop>
 if has("nvim")
     lua require('plugins')
     set termguicolors
+
+    " Disable search and mode because its shown in the lualine
+    set shortmess+=S
+    set noshowmode
 endif

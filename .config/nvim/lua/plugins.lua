@@ -32,7 +32,6 @@ return require('packer').startup(function()
     }
 
     -- File management/fuzzy finding
-    --   use 'scrooloose/nerdtree'
     use {
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -47,22 +46,12 @@ return require('packer').startup(function()
 
     -- colorscheme
     use {
-        'tomasiser/vim-code-dark',
-        config = function()
-            vim.cmd("colorscheme codedark")
-        end,
-    }
-    use {
-        'dracula/vim',
-        config = function()
-            vim.cmd("colorscheme dracula")
-        end,
+        'catppuccin/nvim',
+        as = "catppuccin"
     }
 
     -- Shortcuts
     use 'preservim/nerdcommenter'
     use "folke/which-key.nvim"
- 
-
 end)
 
