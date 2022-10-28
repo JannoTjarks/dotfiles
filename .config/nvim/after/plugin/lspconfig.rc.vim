@@ -95,4 +95,26 @@ require'lspconfig'.jedi_language_server.setup{
     on_attach = on_attach,
     capabilities = capabilities
 }
+
+require'lspconfig'.sumneko_lua.setup {
+    cmd = { "/home/janno/.local/bin/lua-language-server/bin/lua-language-server" },
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                globals = {'vim'},
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+}
 EOF
