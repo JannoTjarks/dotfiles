@@ -80,13 +80,13 @@ require('lspconfig').bashls.setup{
 }
 
 require('lspconfig').powershell_es.setup{
-    bundle_path = '~/powershell-editor-services',
+    bundle_path = '/home/janno/.local/bin/powershell-editor-services',
     on_attach = on_attach,
     capabilities = capabilities
 }
 
 require'lspconfig'.omnisharp.setup {
-    cmd = { "dotnet", "/home/janno/bin/omnisharp/OmniSharp.dll" },
+    cmd = { "dotnet", "/home/janno/.local/bin/omnisharp/OmniSharp.dll" },
     on_attach = on_attach,
     capabilities = capabilities
 }
