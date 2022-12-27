@@ -75,7 +75,8 @@ require('lspconfig').yamlls.setup{
 
 require('lspconfig').terraformls.setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    filetypes = { 'terraform', 'terraform-vars' }
 }
 
 require('lspconfig').gopls.setup {
