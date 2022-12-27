@@ -7,6 +7,7 @@ set envelope_from = yes
 
 ## personal account info
 set imap_user = "janno.tjarks@mailbox.org"
+set imap_pass=`secret-tool lookup email janno.tjarks@mailbox.org`
 set folder = imaps://imap.mailbox.org/
 set smtp_url = smtps://janno.tjarks@mailbox.org@smtp.mailbox.org
 ### this needs the package cyrus-sasl-plain
@@ -23,12 +24,12 @@ set postponed = "=Drafts"
 set copy=yes
 
 # color scheme
-# source ~/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc 
+# source ~/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc
 #
 set mailcap_path="~/.mailcap"
 bind attach <return>    view-mailcap
 
-set sort_aux = last-date-received                           
+set sort_aux = last-date-received
 set sort = reverse-threads
 
 # if you have more than a few emails, you *really* want this
@@ -36,3 +37,6 @@ set header_cache = ~/.mutt/headercache
 set message_cachedir = ~/.mutt/messagecache
 
 # vim: ft=muttrc:
+#
+# Keybindings
+bind index G imap-fetch-mail
