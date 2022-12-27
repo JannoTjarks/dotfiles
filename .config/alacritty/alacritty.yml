@@ -5,5 +5,6 @@ window:
   decorations: none
 
 font:
+  size: 10.0
   normal:
     family: SauceCodePro Nerd Font
