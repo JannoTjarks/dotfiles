@@ -5,6 +5,7 @@ set encoding=utf8
 set backupdir=~/.vim/backups
 
 " Accessablity
+set mouse=
 set shortmess+=c
 set showmode
 set signcolumn=yes
