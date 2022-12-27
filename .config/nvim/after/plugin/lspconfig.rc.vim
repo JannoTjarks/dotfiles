@@ -61,7 +61,16 @@ require('lspconfig').jsonls.setup{
 
 require('lspconfig').yamlls.setup{
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    filetypes = { 'yaml', 'yml', 'yaml.docker-compsose' },
+    settings = {
+        yaml = {
+            schemas = {
+                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+                ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = "/.azurepipelines/*"
+            }
+        }
+    }
 }
 
 require('lspconfig').terraformls.setup {
