@@ -24,7 +24,7 @@ set postponed = "=Drafts"
 set copy=yes
 
 # color scheme
-# source ~/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc
+source ~/.mutt/dracula.muttrc
 #
 set mailcap_path="~/.mailcap"
 bind attach <return>    view-mailcap
