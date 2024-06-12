@@ -26,9 +26,8 @@ alias currentfolder='basename "`pwd`"'
 
 # Theme
 export COLORTHEME="truecolor"
-ZSH_THEME="dracula"
-DRACULA_DISPLAY_CONTEXT=1
-DRACULA_DISPLAY_TIME=1
+ZSH_THEME="catppuccin-mocha"
+CATPPUCCIN_SHOW_TIME=true
 
 # OH_MY_ZSH configuration
 export ZSH=$HOME/.oh-my-zsh
