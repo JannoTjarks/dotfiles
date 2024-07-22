@@ -1,0 +1,37 @@
+auto-reload yes
+
+
+# Key Bindings
+unbind-key UP
+unbind-key DOWN
+unbind-key h
+unbind-key j
+unbind-key k
+unbind-key l
+unbind-key s
+unbind-key ^B
+
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key [ prev-feed
+bind-key K prev
+bind-key ] next-feed
+bind-key J next
+bind-key g home
+bind-key G end
+bind-key B bookmark
+bind-key ^H toggle-show-read-feeds
+
+# Themes
+include ~/.newsboat/dark
+
+# Source
+urls-source "ttrss"
+ttrss-url "https://ttrss.tjarks.dev/"
+
+ttrss-login "janno"
+ttrss-passwordeval "secret-tool lookup ttrss.tjarks.dev janno"
+ttrss-flag-star "s"
+ttrss-flag-publish "p"
