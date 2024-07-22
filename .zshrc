@@ -22,7 +22,8 @@ alias currentfolder='basename "`pwd`"'
 
 # Theme
 export COLORTHEME="truecolor"
-ZSH_THEME="catppuccin-mocha"
+ZSH_THEME="catppuccin"
+CATPPUCCIN_FLAVOR="mocha"
 CATPPUCCIN_SHOW_TIME=true
 
 # OH_MY_ZSH configuration
