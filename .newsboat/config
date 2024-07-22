@@ -1,6 +1,5 @@
 auto-reload yes
 
-
 # Key Bindings
 unbind-key UP
 unbind-key DOWN
@@ -25,13 +24,13 @@ bind-key B bookmark
 bind-key ^H toggle-show-read-feeds
 
 # Themes
-include ~/.newsboat/dark
+include ~/.newsboat/latte
 
 # Source
 urls-source "ttrss"
 ttrss-url "https://ttrss.tjarks.dev/"
 
 ttrss-login "janno"
-ttrss-passwordeval "secret-tool lookup ttrss.tjarks.dev janno"
+include ~/.newsboar/ttrss-passwordeval
 ttrss-flag-star "s"
 ttrss-flag-publish "p"

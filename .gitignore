@@ -1,3 +1,4 @@
 .config/tmux/plugins/
 .newsboat/cache.db
 .newsboat/history*
+.newsboat/ttrss-password
