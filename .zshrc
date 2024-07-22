@@ -16,10 +16,6 @@ export NODE_EXTRA_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 # export REQUESTS_CA_BUNDLE=/etc/ssl/ca-bundle.pem
 # export NODE_EXTRA_CA_BUNDLE=/etc/ssl/ca-bundle.pem
 
-# Sets nvim as default editor if installed
-if (( $+commands[nvim] )); then
-    export EDITOR=nvim
-fi
 
 # Alias
 alias currentfolder='basename "`pwd`"'
@@ -59,6 +55,11 @@ fi
 # because nerdctl is just a uncompleted link without rancher desktop
 if (( $+commands[nerdctl] )); then
     source <(nerdctl completion zsh &> /dev/null) 
+fi
+
+# Sets nvim as default editor if installed
+if (( $+commands[nvim] )); then
+    export EDITOR=nvim
 fi
 
 # nvm
