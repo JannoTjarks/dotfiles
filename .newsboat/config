@@ -24,13 +24,18 @@ bind-key B bookmark
 bind-key ^H toggle-show-read-feeds
 
 # Themes
-include ~/.newsboat/latte
+include ~/.newsboat/dark
 
 # Source
 urls-source "ttrss"
 ttrss-url "https://ttrss.tjarks.dev/"
 
 ttrss-login "janno"
-include ~/.newsboar/ttrss-passwordeval
+ttrss-passwordeval "secret-tool lookup ttrss.tjarks.dev janno"
 ttrss-flag-star "s"
 ttrss-flag-publish "p"
+
+selecttag-format "[%i] %T (%n unread)
+show-read-feeds no
+
+run-on-startup select-tag
