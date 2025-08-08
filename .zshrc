@@ -1,6 +1,8 @@
 # Environment variables
 export PATH=/usr/bin/terraform:$HOME/go/bin/:$HOME/bin:$HOME/.local/bin:/usr/local/go/bin/:$PATH
 export PATH=$HOME/.local/share/nvim/mason/bin/:$PATH
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
 
 # Debian
 export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
