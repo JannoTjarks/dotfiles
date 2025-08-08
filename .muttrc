@@ -22,6 +22,8 @@ set postponed = "=Drafts"
 # non-mailbox specific settings
 ## save copies of sent mail to $record
 set copy=yes
+set assumed_charset="utf-8:iso-8859-1:us-ascii"
+set send_charset="us-ascii:iso-8859-1:utf-8"
 
 # color scheme
 source ~/.mutt/dracula.muttrc
